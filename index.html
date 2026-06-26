@@ -7,8 +7,7 @@
     <title>Generador de Presupuestos Profesionales</title>
     
     <link rel="icon" type="image/png" href="logo.png">
-
-    <!-- Librerías de maquetación (Tailwind) y conversión a PDF (html2pdf) -->
+    
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 
@@ -36,7 +35,7 @@
             top: 0;
             clip-path: polygon(0 0, 100% 0, 88% 100%, 0 100%);
         }
-
+        
         .bloque-titulo-presupuesto {
             background-color: #111111;
             width: 45%;
@@ -65,188 +64,130 @@
         }
 
         /* Ocultar barras de scroll estéticas */
-        .ocultar-scrollbar::-webkit-scrollbar {
-            display: none;
-        }
-
-        .ocultar-scrollbar {
-            -ms-overflow-style: none;
-            scrollbar-width: none;
-        }
+        .ocultar-scrollbar::-webkit-scrollbar { display: none; }
+        .ocultar-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
     </style>
 </head>
 
 <body class="bg-zinc-900 text-zinc-100 min-h-screen flex flex-col md:flex-row antialiased">
 
-    <!-- 🛠️ 1. PANEL DE CONTROL IZQUIERDO -->
-    <div
-        class="w-full md:w-[450px] bg-zinc-950 p-5 border-b md:border-b-0 md:border-r border-zinc-800 overflow-y-auto md:h-screen flex flex-col justify-between shrink-0">
+    <div class="w-full md:w-[450px] bg-zinc-950 p-5 border-b md:border-b-0 md:border-r border-zinc-800 overflow-y-auto md:h-screen flex flex-col justify-between shrink-0">
         <div class="space-y-6">
-
-            <!-- Cabecera del Panel -->
+            
             <div class="flex justify-between items-center">
                 <div>
                     <h1 class="text-lg font-bold text-verde-principal tracking-tight">// Panel de Edición</h1>
                     <p class="text-[11px] text-zinc-500">Tus datos profesionales se quedan guardados solos.</p>
                 </div>
-                <button onclick="limpiarSoloCliente()"
-                    class="text-[11px] border border-zinc-800 hover:border-zinc-700 text-zinc-400 px-2.5 py-1 rounded-lg transition-colors">
+                <button onclick="limpiarSoloCliente()" class="text-[11px] border border-zinc-800 hover:border-zinc-700 text-zinc-400 px-2.5 py-1 rounded-lg transition-colors">
                     Nuevo Cliente
                 </button>
             </div>
 
             <hr class="border-zinc-800">
 
-            <!-- Sección: Datos del Autónomo -->
             <div class="space-y-2.5">
                 <div class="flex justify-between items-center">
                     <h3 class="text-xs font-semibold uppercase text-zinc-400 tracking-wider">Mis Datos</h3>
-                    <span class="text-[9px] bg-zinc-800 text-zinc-400 px-1.5 py-0.5 rounded font-mono">💾
-                        AUTO-GUARDAR</span>
+                    <span class="text-[9px] bg-zinc-800 text-zinc-400 px-1.5 py-0.5 rounded font-mono">💾 AUTO-GUARDAR</span>
                 </div>
-                <input type="text" id="in-mi-nombre" placeholder="Tu Nombre / Nombre Comercial"
-                    class="w-full bg-zinc-900 border border-zinc-800 rounded-lg px-3 py-2 text-[16px] md:text-sm text-white focus:outline-none focus:border-verde-principal">
-                <input type="text" id="in-mi-nif" placeholder="Tu NIF"
-                    class="w-full bg-zinc-900 border border-zinc-800 rounded-lg px-3 py-2 text-[16px] md:text-sm text-white focus:outline-none focus:border-verde-principal">
-                <input type="text" id="in-mi-direccion" placeholder="Tu Dirección / Localidad"
-                    class="w-full bg-zinc-900 border border-zinc-800 rounded-lg px-3 py-2 text-[16px] md:text-sm text-white focus:outline-none focus:border-verde-principal">
-                <input type="text" id="in-mi-telefono" placeholder="Tu Teléfono"
-                    class="w-full bg-zinc-900 border border-zinc-800 rounded-lg px-3 py-2 text-[16px] md:text-sm text-white focus:outline-none focus:border-verde-principal">
-                <input type="text" id="in-mi-email" placeholder="Tu Email corporativo"
-                    class="w-full bg-zinc-900 border border-zinc-800 rounded-lg px-3 py-2 text-[16px] md:text-sm text-white focus:outline-none focus:border-verde-principal">
-                <input type="text" id="in-mi-banco" placeholder="Cobros (Ej: IBAN, Bizum o Efectivo al acabar)"
-                    class="w-full bg-zinc-900 border border-zinc-800 rounded-lg px-3 py-2 text-[16px] md:text-sm text-white focus:outline-none focus:border-verde-principal">
+                <input type="text" id="in-mi-nombre" placeholder="Tu Nombre / Nombre Comercial" class="w-full bg-zinc-900 border border-zinc-800 rounded-lg px-3 py-2 text-[16px] md:text-sm text-white focus:outline-none focus:border-verde-principal">
+                <input type="text" id="in-mi-nif" placeholder="Tu NIF" class="w-full bg-zinc-900 border border-zinc-800 rounded-lg px-3 py-2 text-[16px] md:text-sm text-white focus:outline-none focus:border-verde-principal">
+                <input type="text" id="in-mi-direccion" placeholder="Tu Dirección / Localidad" class="w-full bg-zinc-900 border border-zinc-800 rounded-lg px-3 py-2 text-[16px] md:text-sm text-white focus:outline-none focus:border-verde-principal">
+                <input type="text" id="in-mi-telefono" placeholder="Tu Teléfono" class="w-full bg-zinc-900 border border-zinc-800 rounded-lg px-3 py-2 text-[16px] md:text-sm text-white focus:outline-none focus:border-verde-principal">
+                <input type="text" id="in-mi-email" placeholder="Tu Email corporativo" class="w-full bg-zinc-900 border border-zinc-800 rounded-lg px-3 py-2 text-[16px] md:text-sm text-white focus:outline-none focus:border-verde-principal">
+                <input type="text" id="in-mi-banco" placeholder="Cobros (Ej: IBAN, Bizum o Efectivo al acabar)" class="w-full bg-zinc-900 border border-zinc-800 rounded-lg px-3 py-2 text-[16px] md:text-sm text-white focus:outline-none focus:border-verde-principal">
             </div>
 
-            <!-- Sección: Datos del Cliente -->
             <div class="space-y-2.5">
                 <h3 class="text-xs font-semibold uppercase text-zinc-400 tracking-wider">Datos del Cliente</h3>
-                <input type="text" id="in-cliente-nombre" placeholder="Nombre del Cliente"
-                    class="w-full bg-zinc-900 border border-zinc-800 rounded-lg px-3 py-2 text-[16px] md:text-sm text-white focus:outline-none focus:border-verde-principal">
-                <input type="text" id="in-cliente-direccion" placeholder="Dirección de la Obra"
-                    class="w-full bg-zinc-900 border border-zinc-800 rounded-lg px-3 py-2 text-[16px] md:text-sm text-white focus:outline-none focus:border-verde-principal">
-                <input type="text" id="in-cliente-telefono" placeholder="Teléfono del Cliente"
-                    class="w-full bg-zinc-900 border border-zinc-800 rounded-lg px-3 py-2 text-[16px] md:text-sm text-white focus:outline-none focus:border-verde-principal">
+                <input type="text" id="in-cliente-nombre" placeholder="Nombre del Cliente" class="w-full bg-zinc-900 border border-zinc-800 rounded-lg px-3 py-2 text-[16px] md:text-sm text-white focus:outline-none focus:border-verde-principal">
+                <input type="text" id="in-cliente-direccion" placeholder="Dirección de la Obra" class="w-full bg-zinc-900 border border-zinc-800 rounded-lg px-3 py-2 text-[16px] md:text-sm text-white focus:outline-none focus:border-verde-principal">
+                <input type="text" id="in-cliente-telefono" placeholder="Teléfono del Cliente" class="w-full bg-zinc-900 border border-zinc-800 rounded-lg px-3 py-2 text-[16px] md:text-sm text-white focus:outline-none focus:border-verde-principal">
             </div>
 
-            <!-- Sección: Detalles del Proyecto -->
             <div class="space-y-2.5">
                 <h3 class="text-xs font-semibold uppercase text-zinc-400 tracking-wider">Proyecto y Duración</h3>
-                <input type="text" id="in-obra-titulo" placeholder="Objeto del trabajo (Ej: Alicatado de Baño)"
-                    class="w-full bg-zinc-900 border border-zinc-800 rounded-lg px-3 py-2 text-[16px] md:text-sm text-white focus:outline-none focus:border-verde-principal">
-                <input type="text" id="in-obra-plazo" placeholder="Plazo de ejecución (Ej: 4 días laborables)"
-                    class="w-full bg-zinc-900 border border-zinc-800 rounded-lg px-3 py-2 text-[16px] md:text-sm text-white focus:outline-none focus:border-verde-principal">
+                <input type="text" id="in-obra-titulo" placeholder="Objeto del trabajo (Ej: Alicatado de Baño)" class="w-full bg-zinc-900 border border-zinc-800 rounded-lg px-3 py-2 text-[16px] md:text-sm text-white focus:outline-none focus:border-verde-principal">
+                <input type="text" id="in-obra-plazo" placeholder="Plazo de ejecución (Ej: 4 días laborables)" class="w-full bg-zinc-900 border border-zinc-800 rounded-lg px-3 py-2 text-[16px] md:text-sm text-white focus:outline-none focus:border-verde-principal">
             </div>
 
-            <!-- Sección: Listado de Tareas Dinámicas -->
             <div class="space-y-2.5">
                 <div class="flex justify-between items-center">
-                    <h3 class="text-xs font-semibold uppercase text-zinc-400 tracking-wider">Partidas del Presupuesto
-                        (<span id="txt-contador-lineas">1</span>/15)</h3>
-                    <button type="button" onclick="agregarNuevaLinea()"
-                        class="text-xs bg-verde-principal hover:bg-teal-600 text-white font-medium px-3 py-1.5 rounded-lg transition-all shadow-md">
+                    <h3 class="text-xs font-semibold uppercase text-zinc-400 tracking-wider">Partidas del Presupuesto (<span id="txt-contador-lineas">1</span>/15)</h3>
+                    <button type="button" onclick="agregarNuevaLinea()" class="text-xs bg-verde-principal hover:bg-teal-600 text-white font-medium px-3 py-1.5 rounded-lg transition-all shadow-md">
                         ➕ Añadir Tarea
                     </button>
                 </div>
-
+                
                 <div id="panel-inputs-lineas" class="space-y-2.5 max-h-[280px] overflow-y-auto pr-1 scroll-smooth">
-                    <!-- Se inyecta por JavaScript -->
-                </div>
+                    </div>
             </div>
 
-            <!-- Sección: Configuración de IVA -->
             <div class="space-y-2.5">
                 <h3 class="text-xs font-semibold uppercase text-zinc-400 tracking-wider">Porcentaje de IVA</h3>
-                <select id="in-select-iva"
-                    class="w-full bg-zinc-900 border border-zinc-800 rounded-lg px-3 py-2.5 text-[16px] md:text-sm focus:outline-none focus:border-verde-principal text-zinc-300">
+                <select id="in-select-iva" class="w-full bg-zinc-900 border border-zinc-800 rounded-lg px-3 py-2.5 text-[16px] md:text-sm focus:outline-none focus:border-verde-principal text-zinc-300">
                     <option value="10">IVA Reducido por Reforma Particular (10%)</option>
                     <option value="21">IVA General Comercial (21%)</option>
                 </select>
             </div>
         </div>
 
-        <!-- Botón de Descarga -->
         <div class="pt-6">
-            <button onclick="descargarPresupuestoPDF()"
-                class="w-full bg-verde-principal hover:bg-teal-600 text-white font-semibold py-3.5 rounded-xl transition-all shadow-xl flex items-center justify-center space-x-2 text-sm">
+            <button onclick="descargarPresupuestoPDF()" class="w-full bg-verde-principal hover:bg-teal-600 text-white font-semibold py-3.5 rounded-xl transition-all shadow-xl flex items-center justify-center space-x-2 text-sm">
                 <span>⚡ Descargar Presupuesto PDF</span>
             </button>
         </div>
     </div>
 
-    <!-- 👁️ 2. PANEL DERECHO: VISTA PREVIA PROFESIONAL -->
-    <div
-        class="flex-grow p-4 md:p-6 flex justify-center items-start overflow-auto h-screen ocultar-scrollbar bg-zinc-900">
-
-        <!-- Envoltura de escala responsiva -->
-        <div
-            class="origin-top scale-[0.40] sm:scale-[0.60] md:scale-[0.72] lg:scale-[0.82] xl:scale-100 transition-transform duration-150">
-
-            <!-- HOJA BLANCA IMPRIMIBLE (BLINDADA CONTRA DOBLE HOJA) -->
-            <div id="presupuesto-papel"
-                class="shadow-2xl relative flex flex-col justify-between font-sans overflow-hidden select-none">
-
-                <!-- 👑 ENCABEZADO PREMIUM COMPARTIMENTADO -->
+    <div class="flex-grow p-4 md:p-6 flex justify-center items-start overflow-auto h-screen ocultar-scrollbar bg-zinc-900">
+        
+        <div class="origin-top scale-[0.40] sm:scale-[0.60] md:scale-[0.72] lg:scale-[0.82] xl:scale-100 transition-transform duration-150">
+            
+            <div id="presupuesto-papel" class="shadow-2xl relative flex flex-col justify-between font-sans overflow-hidden select-none">
+                
                 <div class="relative h-36 w-full overflow-hidden shrink-0 bg-white border-b border-zinc-100">
-
-                    <!-- Compartimento Izquierdo: Mis Datos -->
-                    <div class="bloque-datos-autonomo flex items-center pl-8 pr-12">
-                        <div class="flex items-center space-x-4">
-                            <img src="logo.png" alt="Logo"
-                                class="h-11 w-auto object-contain bg-white border border-zinc-200 p-1 rounded shadow-sm"
-                                onerror="this.style.display='none'">
-                            <div>
-                                <h2 id="txt-mi-nombre" class="text-base font-bold text-white tracking-tight uppercase">
-                                    MI NOMBRE</h2>
-                                <p id="txt-mi-nif" class="text-[11px] text-teal-100 font-mono font-medium mt-0.5">NIF: —
-                                </p>
-                            </div>
+                    
+                    <div class="bloque-datos-autonomo flex items-center pl-10 pr-12">
+                        <div>
+                            <h2 id="txt-mi-nombre" class="text-base font-bold text-white tracking-tight uppercase">MI NOMBRE</h2>
+                            <p id="txt-mi-nif" class="text-[11px] text-teal-100 font-mono font-medium mt-0.5">NIF: —</p>
                         </div>
                     </div>
 
-                    <!-- Compartimento Derecho: Datos del Documento -->
                     <div class="bloque-titulo-presupuesto flex flex-col justify-center items-end pr-10 text-white">
                         <h1 class="text-2xl font-black tracking-widest text-right text-white">PRESUPUESTO</h1>
                         <div class="text-[10px] font-mono text-zinc-400 mt-1 text-right space-y-0.5">
                             <p>FECHA: <span id="txt-doc-fecha" class="text-white">--/--/----</span></p>
-                            <p id="wrapper-plazo" class="hidden">PLAZO EJECUCIÓN: <span id="txt-doc-plazo"
-                                    class="text-white font-sans font-semibold">—</span></p>
+                            <p id="wrapper-plazo" class="hidden">PLAZO EJECUCIÓN: <span id="txt-doc-plazo" class="text-white font-sans font-semibold">—</span></p>
                         </div>
                     </div>
 
                 </div>
 
-                <!-- 📝 CUERPO CENTRAL DE LA HOJA -->
                 <div class="px-10 py-6 flex-grow flex flex-col justify-between overflow-hidden">
-
-                    <!-- Fichas de Direcciones -->
+                    
                     <div class="grid grid-cols-2 gap-8 text-xs shrink-0 mb-4">
                         <div class="space-y-0.5 text-zinc-600">
-                            <h4 class="font-bold text-verde-principal uppercase tracking-wider text-[9px]">DIRECCIÓN DE
-                                CONTACTO:</h4>
+                            <h4 class="font-bold text-verde-principal uppercase tracking-wider text-[9px]">DIRECCIÓN DE CONTACTO:</h4>
                             <p id="txt-mi-direccion">—</p>
                             <p id="txt-mi-contacto" class="font-mono text-zinc-500">—</p>
                         </div>
                         <div class="space-y-0.5 text-zinc-600 border-l border-zinc-200 pl-6">
-                            <h4 class="font-bold text-verde-principal uppercase tracking-wider text-[9px]">VALORACIÓN
-                                PARA EL CLIENTE:</h4>
+                            <h4 class="font-bold text-verde-principal uppercase tracking-wider text-[9px]">VALORACIÓN PARA EL CLIENTE:</h4>
                             <p id="txt-cliente-nombre" class="font-semibold text-zinc-900 text-xs">—</p>
                             <p id="txt-cliente-direccion">—</p>
                             <p id="txt-cliente-telefono" class="font-mono text-zinc-500">—</p>
                         </div>
                     </div>
 
-                    <!-- Concepto descriptivo general -->
                     <div class="shrink-0 mb-4">
                         <div class="border-b border-zinc-200 pb-1">
-                            <h4 class="text-[9px] font-bold uppercase text-verde-principal tracking-wider">TRABAJO
-                                ACORDADO:</h4>
-                            <h2 id="txt-obra-titulo" class="text-xs font-semibold text-zinc-800 mt-0.5">Definición de
-                                obra</h2>
+                            <h4 class="text-[9px] font-bold uppercase text-verde-principal tracking-wider">TRABAJO ACORDADO:</h4>
+                            <h2 id="txt-obra-titulo" class="text-xs font-semibold text-zinc-800 mt-0.5">Definición de obra</h2>
                         </div>
                     </div>
 
-                    <!-- Tabla de Precios -->
                     <div class="flex-grow overflow-hidden mb-4">
                         <table class="w-full text-left">
                             <thead>
@@ -259,54 +200,39 @@
                                 </tr>
                             </thead>
                             <tbody id="tabla-papel-items" class="text-zinc-700 divide-y divide-zinc-100">
-                                <!-- Se inyecta por JavaScript -->
-                            </tbody>
+                                </tbody>
                         </table>
                     </div>
 
-                    <!-- Escudo de Protección Legal -->
                     <div id="box-clausulas" class="bg-zinc-50 border border-zinc-200 rounded-xl p-4 shrink-0 mb-4">
-                        <h4 id="txt-clausulas-head"
-                            class="text-[9px] font-bold uppercase text-zinc-500 tracking-widest mb-2">Condiciones y
-                            Coberturas del Contrato de Obra</h4>
+                        <h4 id="txt-clausulas-head" class="text-[9px] font-bold uppercase text-zinc-500 tracking-widest mb-2">Condiciones y Coberturas del Contrato de Obra</h4>
                         <ul id="txt-clausulas-lista" class="text-[10px] text-zinc-600 space-y-1 leading-relaxed">
-                            <!-- Se rellena por JavaScript -->
-                        </ul>
+                            </ul>
                     </div>
 
-                    <!-- Firmas, Métodos de Cobro y Totales -->
                     <div class="flex justify-between items-end border-t border-zinc-100 pt-4 shrink-0">
                         <div class="w-[52%] flex flex-col justify-between self-stretch">
                             <div>
-                                <p class="text-[10px] font-bold text-zinc-800 mb-0.5">MUCHAS GRACIAS POR TRABAJAR
-                                    CONMIGO</p>
-                                <p class="text-[8.5px] text-zinc-500 leading-tight">Este presupuesto detalla un
-                                    compromiso formal de ejecución por mi parte. Para dar conformidad, firmamos este
-                                    documento de mutuo acuerdo.</p>
-
-                                <p
-                                    class="text-[8.5px] text-zinc-700 font-medium mt-2 bg-zinc-100/70 p-1.5 rounded inline-block">
-                                    💳 Modo de abono: <span id="txt-mi-banco"
-                                        class="font-mono font-bold text-zinc-900">—</span>
+                                <p class="text-[10px] font-bold text-zinc-800 mb-0.5">MUCHAS GRACIAS POR TRABAJAR CONMIGO</p>
+                                <p class="text-[8.5px] text-zinc-500 leading-tight">Este presupuesto detalla un compromiso formal de ejecución por mi parte. Para dar conformidad, firmamos este documento de mutuo acuerdo.</p>
+                                
+                                <p class="text-[8.5px] text-zinc-700 font-medium mt-2 bg-zinc-100/70 p-1.5 rounded inline-block">
+                                    💳 Modo de abono: <span id="txt-mi-banco" class="font-mono font-bold text-zinc-900">—</span>
                                 </p>
                             </div>
-
-                            <!-- Sección de Doble Firma -->
+                            
                             <div class="mt-4 flex justify-between gap-4 text-[8px] text-zinc-400 font-mono w-full">
                                 <div class="border-t border-dashed border-zinc-300 pt-1.5 w-[48%] text-center">
-                                    Fdo: <span id="txt-sig-prof" class="text-zinc-700 font-semibold block truncate">El
-                                        Profesional</span>
+                                    Fdo: <span id="txt-sig-prof" class="text-zinc-700 font-semibold block truncate">El Profesional</span>
                                     <span class="text-[7px] text-zinc-400 block mt-0.5">(Emisor)</span>
                                 </div>
                                 <div class="border-t border-dashed border-zinc-300 pt-1.5 w-[48%] text-center">
-                                    Fdo: <span id="txt-sig-cliente"
-                                        class="text-zinc-700 font-semibold block truncate">El Cliente</span>
+                                    Fdo: <span id="txt-sig-cliente" class="text-zinc-700 font-semibold block truncate">El Cliente</span>
                                     <span class="text-[7px] text-zinc-400 block mt-0.5">(Aceptación)</span>
                                 </div>
                             </div>
                         </div>
 
-                        <!-- Desglose Numérico -->
                         <div class="w-52 text-[11px] font-mono">
                             <div class="flex justify-between py-1 border-b border-zinc-100 px-1 text-zinc-600">
                                 <span>SUMA TOTAL:</span>
@@ -316,8 +242,7 @@
                                 <span>I.V.A. (<span id="txt-iva-porcentaje">10</span>%):</span>
                                 <span id="txt-total-iva">0,00 €</span>
                             </div>
-                            <div
-                                class="flex justify-between py-2 bg-verde-principal text-white font-bold px-2.5 rounded-lg mt-1 text-xs shadow-sm">
+                            <div class="flex justify-between py-2 bg-verde-principal text-white font-bold px-2.5 rounded-lg mt-1 text-xs shadow-sm">
                                 <span>TOTAL NETO:</span>
                                 <span id="txt-total-absoluto">0,00 €</span>
                             </div>
@@ -326,16 +251,11 @@
 
                 </div>
 
-                <!-- 📐 3. PIE DE PÁGINA RELLENO (CENTRADO ASIMÉTRICO CORREGIDO) -->
                 <div class="bloque-pie-pagina w-full overflow-hidden shrink-0 flex items-center">
-                    <div
-                        class="w-full h-full grid grid-cols-3 text-center text-[9px] font-mono text-teal-50 px-6 divide-x divide-teal-600/40">
-                        <div class="flex items-center justify-center px-2 truncate">📞 Tel: &nbsp;<span
-                                id="txt-foot-tlf" class="font-sans font-semibold">—</span></div>
-                        <div class="flex items-center justify-center px-2 truncate">✉️ Email: &nbsp;<span
-                                id="txt-foot-email" class="font-sans font-semibold">—</span></div>
-                        <div class="flex items-center justify-center px-2 truncate">📍 Ubicación: &nbsp;<span
-                                id="txt-foot-dir" class="font-sans font-semibold">—</span></div>
+                    <div class="w-full h-full grid grid-cols-3 text-center text-[9px] font-mono text-teal-50 px-6 divide-x divide-teal-600/40">
+                        <div class="flex items-center justify-center px-2 truncate">📞 Tel: &nbsp;<span id="txt-foot-tlf" class="font-sans font-semibold">—</span></div>
+                        <div class="flex items-center justify-center px-2 truncate">✉️ Email: &nbsp;<span id="txt-foot-email" class="font-sans font-semibold">—</span></div>
+                        <div class="flex items-center justify-center px-2 truncate">📍 Ubicación: &nbsp;<span id="txt-foot-dir" class="font-sans font-semibold">—</span></div>
                     </div>
                 </div>
 
@@ -343,7 +263,6 @@
         </div>
     </div>
 
-    <!-- 🧠 SCRIPT LÓGICO COMPLETO -->
     <script>
         let partidas = [
             { descripcion: 'Preparación de base y colocación de plaqueta', precio: 25, cantidad: 18 }
@@ -376,7 +295,7 @@
             }
             if (id === 'in-mi-nif') document.getElementById('txt-mi-nif').innerText = valor ? 'NIF: ' + valor : '—';
             if (id === 'in-mi-banco') document.getElementById('txt-mi-banco').innerText = valor || '—';
-
+            
             if (id === 'in-mi-direccion') {
                 document.getElementById('txt-mi-direccion').innerText = valor || '—';
                 document.getElementById('txt-foot-dir').innerText = valor || '—';
@@ -436,12 +355,11 @@
             document.getElementById('txt-cliente-telefono').innerText = '—';
             document.getElementById('txt-obra-titulo').innerText = 'Definición del proyecto';
             document.getElementById('wrapper-plazo').classList.add('hidden');
-
+            
             partidas = [{ descripcion: '', precio: 0, cantidad: 1 }];
             renderTodo();
         }
 
-        // 📱 MODIFICADO: AHORA CON AUTO-SCROLL AL FONDO Y ENFOQUE EN EL CAMPO NUEVO
         function agregarNuevaLinea() {
             if (partidas.length >= 15) {
                 alert('Límite de 15 líneas alcanzado para mantener el formato oficial de una sola página A4.');
@@ -488,7 +406,7 @@
             partidas.forEach((item, index) => {
                 const divRow = document.createElement('div');
                 divRow.className = "bg-zinc-900 border border-zinc-800 p-2.5 rounded-xl flex flex-col space-y-1.5 relative";
-
+                
                 divRow.innerHTML = `
                     <div class="flex items-center justify-between">
                         <span class="text-[10px] text-zinc-500 font-mono font-bold">Tarea #${index + 1}</span>
@@ -584,14 +502,14 @@
             const elemento = document.getElementById('presupuesto-papel');
             const cliente = document.getElementById('in-cliente-nombre').value.trim();
             const nombreArchivo = cliente ? `Presupuesto_${cliente.replace(/\s+/g, '_')}` : 'Presupuesto_Cliente';
-
+            
             const opciones = {
                 margin: 0,
                 filename: `${nombreArchivo}.pdf`,
                 image: { type: 'jpeg', quality: 0.98 },
                 html2canvas: { scale: 2, useCORS: true, letterRendering: true, scrollY: 0 },
                 jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
-                pagebreak: { mode: 'avoid' } // 🟢 Evita saltos automáticos o páginas fantasma
+                pagebreak: { mode: 'avoid' }
             };
 
             html2pdf().set(opciones).from(elemento).save();
